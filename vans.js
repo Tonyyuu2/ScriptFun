@@ -14,7 +14,16 @@ require("dotenv").config();
     await page.waitForNetworkIdle();
   };
 
-
-
   await page.waitForNetworkIdle();
+
+  await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[1]/div/div[2]/div[5]')
+
+  await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[2]/div/div/div[2]/div[1]/div[1]/button/div')
+
+  await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[2]/div/div/div[2]/div[1]/div[1]/div/div/div[2]/div/div[1]/div/div/button/div')
+
+  await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[2]/div/div/div[2]/div[1]/div[1]/div/div/div[2]/div/div[1]/div/div/div/ul/li[3]')
+
+  await page.waitForXPath('//*[@id="fsrInvite"]/section[3]/button[2]')
+  await clickHandler('//*[@id="fsrInvite"]/section[3]/button[2]')
 })();
