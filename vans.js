@@ -1,13 +1,11 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
 (async () => {
-
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto('https://www.nike.com/ca/')
+  await page.goto("https://www.vans.ca/en-ca", { timeout: 0 });
 
-  await page.waitForNetworkIdle();
-
+  page.setDefaultNavigationTimeout(0);
 
   const clickHandler = async (path) => {
     const target = await page.$x(path);
@@ -17,4 +15,6 @@ require("dotenv").config();
   };
 
 
+
+  await page.waitForNetworkIdle();
 })();
