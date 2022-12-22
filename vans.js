@@ -1,5 +1,8 @@
 const puppeteer = require("puppeteer");
+const {scrollPageToBottom} = require('puppeteer-autoscroll-down')
 require("dotenv").config();
+
+
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
@@ -26,4 +29,13 @@ require("dotenv").config();
 
   await page.waitForXPath('//*[@id="fsrInvite"]/section[3]/button[2]')
   await clickHandler('//*[@id="fsrInvite"]/section[3]/button[2]')
+
+  // await scrollPageToBottom(page, { size: 10,})
+
+  const classicCheckered = await page.waitForXPath('//*[@id="VN0A5FCAAUH"]/div[1]/div/a/picture[1]/img')
+
+  await page.evaluate((pageItem) => pageItem.scrollIntoView(), classicCheckered)
+
+  await clickHandler('//*[@id="VN0A5FCAAUH"]/div[1]/div/a/picture[1]/img')
+
 })();
