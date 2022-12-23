@@ -1,9 +1,10 @@
 const puppeteer = require("puppeteer");
 const {scrollPageToBottom} = require('puppeteer-autoscroll-down')
 require("dotenv").config();
-
-
 (async () => {
+
+  const { FIRSTNAME, LASTNAME, ADDRESS, POSTALCODE, CITY, EMAIL, PHONE } = process.env
+
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   await page.goto("https://www.vans.ca/en-ca", { timeout: 0 });
@@ -57,12 +58,19 @@ require("dotenv").config();
 
   await clickHandler('//*[@id="main"]/div[2]/div/div[3]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/button')
 
-  await page.type("#firstname", "Tony")
-  await page.type("#lastname", "Yu")
-  await page.type("#addressline1", "2924 Oxford St.")
+  await page.type("#firstname", FIRSTNAME)
+  await page.type("#lastname", LASTNAME)
+  await page.type("#addressline1", ADDRESS)
   await page.type("#postalcode", "V3B4B8")
   await page.type("#city", "Port Coquitlam")
-
   await page.select('#Province', 'BC')
+  await page.type('#email', "tony.kwangjong.yu@gmail.com")
+  await page.type('#nationalnumber', "6047154937")
+
+  const checkoutView = await page.waitForXPath('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[5]/div/div/div/div/button/span')
+
+  await page.evaluate((pageItem) => pageItem.scrollIntoView(), checkoutView)
+
+  await clickHandler('//*[@id="main"]/div[3]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div/button')
 
 })();
