@@ -30,12 +30,27 @@ require("dotenv").config();
   await page.waitForXPath('//*[@id="fsrInvite"]/section[3]/button[2]')
   await clickHandler('//*[@id="fsrInvite"]/section[3]/button[2]')
 
-  // await scrollPageToBottom(page, { size: 10,})
 
   const classicCheckered = await page.waitForXPath('//*[@id="VN0A5FCAAUH"]/div[1]/div/a/picture[1]/img')
 
   await page.evaluate((pageItem) => pageItem.scrollIntoView(), classicCheckered)
 
   await clickHandler('//*[@id="VN0A5FCAAUH"]/div[1]/div/a/picture[1]/img')
+  
+  const shoeSize = await page.waitForXPath('//*[@id="main"]/div[1]/div/div[3]/div/div[3]/div/div[2]/div/button[10]')
+
+  await page.evaluate((pageItem) => pageItem.scrollIntoView(), shoeSize)
+
+  await clickHandler('//*[@id="main"]/div[1]/div/div[3]/div/div[3]/div/div[2]/div/button[10]')
+
+  const addToCart = await page.waitForXPath('//*[@id="main"]/div[1]/div/div[3]/div/div[5]/div/div[2]/div/div/div')
+
+  await page.evaluate((pageItem) => pageItem.scrollIntoView(), addToCart)
+
+  await clickHandler('//*[@id="main"]/div[1]/div/div[3]/div/div[5]/div/div[2]/div/div/div')
+
+  await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[1]/div/div[2]/div[4]')
+
+  
 
 })();
