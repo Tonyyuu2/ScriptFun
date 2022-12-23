@@ -27,7 +27,7 @@ require("dotenv").config();
 
   await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[2]/div/div/div[2]/div[1]/div[1]/div/div/div[2]/div/div[1]/div/div/div/ul/li[3]')
 
-  await page.waitForXPath('//*[@id="fsrInvite"]/section[3]/button[2]')
+  await page.waitForXPath('//*[@id="fsrInvite"]/section[3]/button[2]', {visible: true, timeout: 50000})
   await clickHandler('//*[@id="fsrInvite"]/section[3]/button[2]')
 
 
@@ -51,6 +51,18 @@ require("dotenv").config();
 
   await clickHandler('//*[@id="__layout"]/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/div/div/header/div[1]/div/div[2]/div[4]')
 
-  
+  const shoeView = await page.waitForXPath('//*[@id="main"]/div[2]/div/div[2]/div/div/div/div/div/div[4]/table')
+
+  await page.evaluate((pageItem) => pageItem.scrollIntoView(), shoeView)
+
+  await clickHandler('//*[@id="main"]/div[2]/div/div[3]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/button')
+
+  await page.type("#firstname", "Tony")
+  await page.type("#lastname", "Yu")
+  await page.type("#addressline1", "2924 Oxford St.")
+  await page.type("#postalcode", "V3B4B8")
+  await page.type("#city", "Port Coquitlam")
+
+  await page.click('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[3]/div/div/div/div/div/div/div/div[1]/div/div[8]/div[1]/svg', {button: "left"} )
 
 })();
