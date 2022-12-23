@@ -3,7 +3,7 @@ const {scrollPageToBottom} = require('puppeteer-autoscroll-down')
 require("dotenv").config();
 (async () => {
 
-  const { FIRSTNAME, LASTNAME, ADDRESS, POSTALCODE, CITY, EMAIL, PHONE } = process.env
+  const { FIRSTNAME, LASTNAME, ADDRESS, POSTALCODE, CITY, EMAIL, PHONE, PROVINCE } = process.env
 
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
@@ -61,11 +61,11 @@ require("dotenv").config();
   await page.type("#firstname", FIRSTNAME)
   await page.type("#lastname", LASTNAME)
   await page.type("#addressline1", ADDRESS)
-  await page.type("#postalcode", "V3B4B8")
-  await page.type("#city", "Port Coquitlam")
-  await page.select('#Province', 'BC')
-  await page.type('#email', "tony.kwangjong.yu@gmail.com")
-  await page.type('#nationalnumber', "6047154937")
+  await page.type("#postalcode", POSTALCODE)
+  await page.type("#city", CITY)
+  await page.select('#Province', PROVINCE)
+  await page.type('#email', EMAIL)
+  await page.type('#nationalnumber', PHONE)
 
   const checkoutView = await page.waitForXPath('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[5]/div/div/div/div/button/span')
 
