@@ -63,6 +63,6 @@ require("dotenv").config();
   await page.type("#postalcode", "V3B4B8")
   await page.type("#city", "Port Coquitlam")
 
-  await page.click('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[3]/div/div/div/div/div/div/div/div[1]/div/div[8]/div[1]/svg', {button: "left"} )
+  await page.select('#Province', 'BC')
 
 })();
