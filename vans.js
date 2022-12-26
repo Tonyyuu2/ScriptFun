@@ -78,5 +78,10 @@ require("dotenv").config();
 
   // await page.type('[name="number"]', CC);
 
+  // await page.waitForSelector('input[aria-describedby="field-description-number"')
+  // await page.type('input[aria-describedby="field-description-number"', '123123123')
+  // await page.type('input[type="tel"]', CC)
+
+  const payPalView = await page.waitForXPath('//*[@id="main"]/div[2]/div/div[1]/div/div/div/div[4]/div/div/div/div/div/div/div/div/div[2]/div[3]/div/label/div[2]')
 
 })();
