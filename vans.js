@@ -3,7 +3,7 @@ const {scrollPageToBottom} = require('puppeteer-autoscroll-down')
 require("dotenv").config();
 (async () => {
 
-  const { FIRSTNAME, LASTNAME, ADDRESS, POSTALCODE, CITY, EMAIL, PHONE, PROVINCE } = process.env
+  const { FIRSTNAME, LASTNAME, ADDRESS, POSTALCODE, CITY, EMAIL, PHONE, PROVINCE, CC } = process.env
 
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
@@ -72,5 +72,11 @@ require("dotenv").config();
   await page.evaluate((pageItem) => pageItem.scrollIntoView(), checkoutView)
 
   await clickHandler('//*[@id="main"]/div[3]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div/button')
+
+  // await page.focus('/html/body/form/input[2]')
+  // await page.keyboard.type(CC)
+
+  // await page.type('[name="number"]', CC);
+
 
 })();
