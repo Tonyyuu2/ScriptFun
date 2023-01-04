@@ -5,7 +5,7 @@ require("dotenv").config();
 
   const { FIRSTNAME, LASTNAME, ADDRESS, POSTALCODE, CITY, EMAIL, PHONE, PROVINCE, CC, PASSWORD } = process.env
 
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: false, slowMo: 10 });
   const page = await browser.newPage();
   await page.goto("https://www.vans.ca/en-ca", { timeout: 0 });
 
@@ -58,27 +58,27 @@ require("dotenv").config();
 
   await clickHandler('//*[@id="main"]/div[2]/div/div[3]/div/div[1]/div/div[1]/div/div/div/div[1]/div/div/button')
 
-  await clickHandler('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[2]/div/div/button')
+  // await clickHandler('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[2]/div/div/button')
 
-  await page.type('#emailaddress-signin', EMAIL, {delay: 1000})
-  await page.type('#passwordsignin', PASSWORD, {delay:  1000})
+  // await page.type('#emailaddress-signin', EMAIL, {})
+  // await page.type('#passwordsignin', PASSWORD, {})
 
-  await clickHandler('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[2]/div/div/section[1]/div[2]/div[2]/div[2]/div/form/button[1]')
+  // await clickHandler('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[2]/div/div/section[1]/div[2]/div[2]/div[2]/div/form/button[1]')
 
-  // await page.type("#firstname", FIRSTNAME)
-  // await page.type("#lastname", LASTNAME)
-  // await page.type("#addressline1", ADDRESS)
-  // await page.type("#postalcode", POSTALCODE)
-  // await page.type("#city", CITY)
-  // await page.select('#Province', PROVINCE)
-  // await page.type('#email', EMAIL)
-  // await page.type('#nationalnumber', PHONE)
+  await page.type("#firstname", FIRSTNAME)
+  await page.type("#lastname", LASTNAME)
+  await page.type("#addressline1", ADDRESS)
+  await page.type("#postalcode", POSTALCODE)
+  await page.type("#city", CITY)
+  await page.select('#Province', PROVINCE)
+  await page.type('#email', EMAIL)
+  await page.type('#nationalnumber', PHONE)
 
-  // const checkoutView = await page.waitForXPath('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[5]/div/div/div/div/button/span')
+  const checkoutView = await page.waitForXPath('//*[@id="main"]/div[3]/div/div[1]/div/div/div/div[5]/div/div/div/div/button/span')
 
-  // await page.evaluate((pageItem) => pageItem.scrollIntoView(), checkoutView)
+  await page.evaluate((pageItem) => pageItem.scrollIntoView(), checkoutView)
 
-  // await clickHandler('//*[@id="main"]/div[3]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div/button')
+  await clickHandler('//*[@id="main"]/div[3]/div/div[2]/div/div/div/div[1]/div/div/div/div[1]/div/div/button')
 
   // await page.focus('/html/body/form/input[2]')
   // await page.keyboard.type(CC)
